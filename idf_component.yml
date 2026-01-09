@@ -1,6 +1,6 @@
 name: esp-improv-lib
 version: "0.1.0"
-description: Demo ESP-IDF component that wraps the example/cmp dependency
+description: ESP-IDF component implementing Improv Wi-Fi protocol
 
 dependencies:
   idf: ">=4.1"
