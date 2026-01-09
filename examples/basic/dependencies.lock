@@ -1,0 +1,66 @@
+dependencies:
+  esp-improv-lib:
+    dependencies:
+    - name: idf
+      version: '>=4.1'
+    - name: example/cmp
+      version: ^3.3.3
+    - name: improv/improv
+      version: ^1.2.5
+    - name: h2zero/esp-nimble-cpp
+      version: ^2.3.2
+    source:
+      path: /home/chris/git/esp-improv-lib
+      type: local
+    version: 0.1.0
+  example/cmp:
+    component_hash: c29f41d59ec860dff32ffa68a20b98b06928dc2111595c5dae368cddc616657c
+    dependencies:
+    - name: idf
+      require: private
+      version: '>=4.1'
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 3.3.9~1
+  h2zero/esp-nimble-cpp:
+    component_hash: 53a8a861abde49ee21f687477709344fa4cee34cea38b475177648165fa9f859
+    dependencies:
+    - name: espressif/esp_hosted
+      registry_url: https://components.espressif.com
+      require: private
+      rules:
+      - if: target in [esp32p4]
+      version: '*'
+    - name: espressif/esp_wifi_remote
+      registry_url: https://components.espressif.com
+      require: private
+      rules:
+      - if: target in [esp32p4]
+      version: '>=0.5.3'
+    - name: idf
+      require: private
+      rules:
+      - if: target in [esp32p4]
+      version: '>=5.3.0'
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 2.3.3
+  idf:
+    source:
+      type: idf
+    version: 5.5.0
+  improv/improv:
+    component_hash: c36b1681fea915e802ec5c8c6c49c992ce89b476c7f3425710c94990aee857b1
+    dependencies: []
+    source:
+      registry_url: https://components.espressif.com/
+      type: service
+    version: 1.2.5
+direct_dependencies:
+- esp-improv-lib
+- idf
+manifest_hash: 08bc1b5c7a4855a4db0b25862fb8d66cac6ba7dda5f06b9aa317e6fb1830415a
+target: esp32
+version: 2.0.0

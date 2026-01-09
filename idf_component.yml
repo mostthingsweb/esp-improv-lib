@@ -1,0 +1,9 @@
+name: esp-improv-lib
+version: "0.1.0"
+description: Demo ESP-IDF component that wraps the example/cmp dependency
+
+dependencies:
+  idf: ">=4.1"
+  example/cmp: "^3.3.3"
+  improv/improv: ^1.2.5
+  h2zero/esp-nimble-cpp: ^2.3.2

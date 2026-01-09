@@ -1,58 +1,23 @@
-| Supported Targets | ESP32 | ESP32-C2 | ESP32-C3 | ESP32-C5 | ESP32-C6 | ESP32-C61 | ESP32-H2 | ESP32-H21 | ESP32-H4 | ESP32-P4 | ESP32-S2 | ESP32-S3 |
-| ----------------- | ----- | -------- | -------- | -------- | -------- | --------- | -------- | --------- | -------- | -------- | -------- | -------- |
+# esp-improv-lib
 
-# Using the component manager for downloading dependencies
+An ESP-IDF component that implements the [Improv Wi-Fi protocol](https://www.improv-wifi.com/). Includes an example app.
 
-This example demonstrates how to use [IDF Component Manager](https://pypi.org/project/idf-component-manager/) for downloading dependencies from [ESP Component Registry](https://components.espressif.com). More details and use cases of IDF Component Manager can be found in the programming guide under `API Guides` -> `Tools` -> `IDF Component Manager`.
+Largely inspired by [the implementation in esphome](https://github.com/esphome/esphome/tree/dev/esphome/components/esp32_improv).
 
-## How to use the example
-### Hardware Required
+## TODOs
+Only basic support for the protocol is implemented. A bunch of stuff is missing, see [https://www.improv-wifi.com/ble/](https://www.improv-wifi.com/ble/).
 
-This example is designed to work with any commonly available development kit.
+1. Support authorizer
+2. Support custom URLs for provision response message
+3. Support 'identify' capability
+4. Support the rest of the commands in the protocol.
 
-### Build and Flash
+## Layout
+- `CMakeLists.txt`, `idf_component.yml`, `src/`, `include/`: the library component (`esp-improv-lib`)
+- `examples/basic`: ESP-IDF app demonstrating how to consume the library locally
 
-Run `idf.py reconfigure` to configure this project. During CMake execution the component manager will process data from the manifest file `./main/idf_component.yml` where 2 dependencies are defined:
+## Build the example
+The example is a self-contained ESP-IDF app. It depends on this component via `examples/basic/main/idf_component.yml`.
 
-- `idf: ">=4.1"` - Specifies required version of ESP-IDF.
-- `example/cmp: ">=3.3.3"` - Defines dependency on [example/cmp](https://components.espressif.com/component/example/cmp) component that is used by the main component.
-
-CMake Output:
-```
-...
-Solving dependencies requirements
-Updating lock file at /home/user/esp-idf/examples/build_system/cmake/component_manager/dependencies.lock
-Processing 2 dependencies:
-[1/2] example/cmp
-[2/2] idf
-...
-```
-
-Content of the `./managed_components` directory after successful build:
-```
-> find  ./managed_components
-./managed_components
-./managed_components/example__cmp
-./managed_components/example__cmp/include
-./managed_components/example__cmp/include/cmp.h
-./managed_components/example__cmp/LICENSE
-./managed_components/example__cmp/README.md
-./managed_components/example__cmp/CMakeLists.txt
-./managed_components/example__cmp/changelog.md
-./managed_components/example__cmp/cmp.c
-./managed_components/example__cmp/idf_component.yml
-```
-
-Flash the project and run the serial monitor to view the output:
-
-```
-idf.py -p PORT flash monitor
-```
-
-### Example Output
-
-The example outputs a line from the `cmp_hello` function from the component downloaded by the component manager.
-
-```
-Hello from example component!
-```
+1. From the repository root run `idf.py -C examples/basic reconfigure build`.
+2. Flash and monitor with `idf.py -C examples/basic -p PORT flash monitor`.

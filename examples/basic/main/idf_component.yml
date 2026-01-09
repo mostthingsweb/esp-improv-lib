@@ -1,0 +1,7 @@
+version: "0.1.0"
+
+dependencies:
+  idf: ">=4.1"
+  esp-improv-lib:
+    version: "*"
+    override_path: ../../../
