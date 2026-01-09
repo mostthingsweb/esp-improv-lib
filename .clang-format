@@ -1,10 +1,13 @@
 BasedOnStyle: LLVM
 IndentWidth: 4
+ContinuationIndentWidth: 4
 TabWidth: 4
 UseTab: Never
 BreakBeforeBraces: Attach
-AllowShortFunctionsOnASingleLine: None
+AllowShortFunctionsOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: false
 AllowShortLoopsOnASingleLine: false
-PointerAlignment: Left
+PointerAlignment: Right
 ColumnLimit: 100
+AccessModifierOffset: -4
+SpaceInEmptyBlock: true
